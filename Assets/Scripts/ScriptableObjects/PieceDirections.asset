@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: PieceDirections
   m_EditorClassIdentifier: 
   Directions:
-  - rotation: 90
-    direction: 0
   - rotation: 0
-    direction: 1
+    direction: 0
   - rotation: 270
-    direction: 2
+    direction: 1
   - rotation: 180
+    direction: 2
+  - rotation: 90
     direction: 3

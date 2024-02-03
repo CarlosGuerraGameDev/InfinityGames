@@ -1,33 +1,62 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
+using DG.Tweening;
 using ScriptableObjects;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Gameplay
 {
     public class Piece : MonoBehaviour, IPiece
     {
-        [Header("Pieces - Configuration")] [Space(5)] 
-        
-        [SerializeField] private Direction desiredDirection;
+        [Header("Pieces - Configuration")] [Space(5)] [SerializeField]
+        private List<Direction> desiredDirections;
+
         [SerializeField] private Direction currentDirection;
         [SerializeField] private PieceSo pieceSo;
 
-        [Space(5)] [Header("Pieces - Components")] [Space(5)] 
-        
-        [SerializeField] private RectTransform rectTransform;
+        [Space(5)] [Header("Pieces - Components")] [Space(5)] [SerializeField]
+        private RectTransform rectTransform;
 
-        [Space(5)] [Header("Piece - Rotation Configuration")] [Space(5)] 
-        
-        [SerializeField] private float rotationSpeed = 0.1f;
-        [SerializeField] private bool hasRightRotation;
+        [SerializeField] private Image imageColor;
+
+        [Space(5)] [Header("Piece - Rotation Configuration")] [Space(5)] [SerializeField]
+        private float rotationDuration = 1f;
+
+        [field: SerializeField] public bool HasRightRotation { get; private set; }
+
         [SerializeField] private bool isRotating;
+
+        [SerializeField] private bool canRotate = true;
+
+        [Space(5)] [Header("Piece - Animation")] [Space(5)] [SerializeField]
+        private Ease rotationAnim;
+
+        private Quaternion initialRotation;
+
+
+        public delegate void CheckPuzzleConditionIsMet();
+
+        public static event CheckPuzzleConditionIsMet OnCheckPuzzleConditionIsMet;
+
+        public bool CanRotate
+        {
+            get => canRotate;
+            set => canRotate = value;
+        }
+
+        private void Start()
+        {
+            imageColor = gameObject.GetComponent<Image>();
+            initialRotation = transform.rotation;
+        }
 
         public void Rotate()
         {
+            if (!CanRotate) return;
+
             var currentRotation = rectTransform.eulerAngles.z;
-            
+
             switch (pieceSo.rotationType)
             {
                 case RotationType.Four:
@@ -38,24 +67,36 @@ namespace Gameplay
                     if (!isRotating)
                     {
                         isRotating = true;
-                        StartCoroutine(StepTo(target90Rotation, rotationSpeed));
+                        rectTransform.DOLocalRotate(new Vector3(0, 0, target90Rotation), rotationDuration)
+                            .SetEase(rotationAnim)
+                            .OnComplete(() =>
+                            {
+                                isRotating = false;
+                                CheckIfRightRotation();
+                                OnCheckPuzzleConditionIsMet?.Invoke();
+                            });
                     }
-
-                    CheckIfRightRotation();
 
                     break;
                 case RotationType.Eight:
-                    
+
                     var target45Rotation = currentRotation + -45.0f;
                     target45Rotation = (target45Rotation + 360.0f) % 360.0f;
-                    
+
                     if (!isRotating)
                     {
                         isRotating = true;
-                        StartCoroutine(StepTo(target45Rotation, rotationSpeed));
-                    }
 
-                    CheckIfRightRotation();
+                        transform.DORotate(new Vector3(0, 0, target45Rotation), rotationDuration)
+                            .SetEase(Ease.Linear)
+                            .SetEase(rotationAnim)
+                            .OnComplete(() =>
+                            {
+                                isRotating = false;
+                                CheckIfRightRotation();
+                                OnCheckPuzzleConditionIsMet?.Invoke();
+                            });
+                    }
 
                     break;
                 default:
@@ -65,42 +106,33 @@ namespace Gameplay
 
         private void CheckIfRightRotation()
         {
-            var currentRotation = rectTransform.eulerAngles.z;
-            var closestRotationDifference = float.MaxValue;
-            var closestDirection = Direction.East;
-            
-            foreach (var piece in pieceSo.pieceDirection.Directions)
+            var pieceSoPieceDirection = pieceSo.pieceDirection;
+            var currentAnglesZ = rectTransform.eulerAngles.z;
+
+            for (int i = 0; i < pieceSoPieceDirection.Directions.Count; i++)
             {
-                float rotationDifference = Mathf.Abs(piece.rotation - (int)currentRotation);
-                
-                if (rotationDifference < closestRotationDifference)
+                if (Math.Abs(pieceSoPieceDirection.Directions[i].rotation - currentAnglesZ) < float.Epsilon)
                 {
-                    closestRotationDifference = rotationDifference;
-                    closestDirection = piece.direction;
+                    Debug.Log(pieceSoPieceDirection.Directions[i].direction);
+                    currentDirection = pieceSoPieceDirection.Directions[i].direction;
                 }
             }
             
-            currentDirection = closestDirection;
-            hasRightRotation = currentDirection == desiredDirection;
-        }
-        
-        private IEnumerator StepTo(float targetRotation, float duration)
-        {
-            var startRotation = rectTransform.eulerAngles.z;
-            var time = 0.0f;
-
-            while (time < duration)
+            foreach (var desiredDir in desiredDirections)
             {
-                var newRotation = Mathf.LerpAngle(startRotation, targetRotation, time / duration);
-                rectTransform.rotation = Quaternion.Euler(0, 0, newRotation);
-
-                time += Time.deltaTime;
-                yield return null;
+                if (currentDirection == desiredDir)
+                {
+                    HasRightRotation = true;
+                    return;
+                }                
             }
 
-            rectTransform.rotation = Quaternion.Euler(0, 0, targetRotation);
-            isRotating = false;
+            HasRightRotation = false;
         }
 
+        public void SetWinningColor()
+        {
+            imageColor.color = Color.white;
+        }
     }
 }
