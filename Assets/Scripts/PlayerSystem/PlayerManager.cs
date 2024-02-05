@@ -31,7 +31,6 @@ namespace PlayerSystem
                 score = 0,
                 level = 1,
                 xp = 0,
-                stages = new List<StagesDTO>()
             };
             
             ISerializer<PlayerDataDTO> jsonSerializer = new JsonSerializer<PlayerDataDTO>();

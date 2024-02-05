@@ -7755,6 +7755,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1751736784}
+        m_TargetAssemblyTypeName: Stages.StagesManager, Assembly-CSharp
+        m_MethodName: UnlockStage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1607677069
 GameObject:
   m_ObjectHideFlags: 0
@@ -8010,6 +8022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1751736783}
+  - component: {fileID: 1751736784}
   m_Layer: 0
   m_Name: StagesManager
   m_TagString: Untagged
@@ -8032,6 +8045,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1751736784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751736782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c16adce0d4b46a88762070deda9fd76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockStage: {fileID: 11400000, guid: 6f7808ccb3e4b744aa873130ef17c3b3, type: 2}
 --- !u!1 &1766646307
 GameObject:
   m_ObjectHideFlags: 0
@@ -8402,6 +8428,7 @@ MonoBehaviour:
   slider: {fileID: 1904506197}
   winTextAnimDuration: 1
   winLevelBarAnimDuration: 1
+  deviceTabletSize: 0.5
   whenPuzzleIsFinishedEvent:
     m_PersistentCalls:
       m_Calls: []
