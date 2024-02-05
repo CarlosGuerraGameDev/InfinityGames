@@ -170,9 +170,9 @@ TextureImporter:
       name: InfinityGames_Art_2
       rect:
         serializedVersion: 2
-        x: 737
+        x: 701
         y: 651
-        width: 45
+        width: 112
         height: 321
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

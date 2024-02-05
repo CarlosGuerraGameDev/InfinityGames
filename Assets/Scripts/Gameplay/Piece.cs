@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using ScriptableObjects;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Gameplay
@@ -29,10 +30,12 @@ namespace Gameplay
 
         [SerializeField] private bool canRotate = true;
 
+        [Space(5)] [Header("Piece - Animation")] [Space(5)]
+        public UnityEvent whenPieceRotates;
+
         [Space(5)] [Header("Piece - Animation")] [Space(5)] [SerializeField]
         private Ease rotationAnim;
 
-        private Quaternion initialRotation;
 
 
         public delegate void CheckPuzzleConditionIsMet();
@@ -48,7 +51,6 @@ namespace Gameplay
         private void Start()
         {
             imageColor = gameObject.GetComponent<Image>();
-            initialRotation = transform.rotation;
         }
 
         public void Rotate()
@@ -66,6 +68,7 @@ namespace Gameplay
                     
                     if (!isRotating)
                     {
+                        whenPieceRotates.Invoke();
                         isRotating = true;
                         rectTransform.DOLocalRotate(new Vector3(0, 0, target90Rotation), rotationDuration)
                             .SetEase(rotationAnim)
@@ -85,8 +88,8 @@ namespace Gameplay
 
                     if (!isRotating)
                     {
+                        whenPieceRotates.Invoke();
                         isRotating = true;
-
                         transform.DORotate(new Vector3(0, 0, target45Rotation), rotationDuration)
                             .SetEase(Ease.Linear)
                             .SetEase(rotationAnim)

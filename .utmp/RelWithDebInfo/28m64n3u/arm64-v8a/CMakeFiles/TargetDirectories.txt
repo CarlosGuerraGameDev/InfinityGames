@@ -1,0 +1,8 @@
+C:/Users/Carlos Guerra/Documents/Unity Projects/InfinityGames/.utmp/RelWithDebInfo/28m64n3u/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/Carlos Guerra/Documents/Unity Projects/InfinityGames/.utmp/RelWithDebInfo/28m64n3u/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/Users/Carlos Guerra/Documents/Unity Projects/InfinityGames/.utmp/RelWithDebInfo/28m64n3u/arm64-v8a/GameActivity/CMakeFiles/game.dir
+C:/Users/Carlos Guerra/Documents/Unity Projects/InfinityGames/.utmp/RelWithDebInfo/28m64n3u/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+C:/Users/Carlos Guerra/Documents/Unity Projects/InfinityGames/.utmp/RelWithDebInfo/28m64n3u/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
+C:/Users/Carlos Guerra/Documents/Unity Projects/InfinityGames/.utmp/RelWithDebInfo/28m64n3u/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
+C:/Users/Carlos Guerra/Documents/Unity Projects/InfinityGames/.utmp/RelWithDebInfo/28m64n3u/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
+C:/Users/Carlos Guerra/Documents/Unity Projects/InfinityGames/.utmp/RelWithDebInfo/28m64n3u/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir

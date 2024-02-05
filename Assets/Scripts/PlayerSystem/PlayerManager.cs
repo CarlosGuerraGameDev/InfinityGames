@@ -12,7 +12,14 @@ namespace PlayerSystem
     public class PlayerManager : MonoBehaviour
     {
         public SaveManager<PlayerDataDTO> saveManager;
-        public PlayerDataDTO currentSaveData;
+        private PlayerDataDTO currentSaveData;
+
+        public PlayerDataDTO CurrentSaveData
+        {
+            get => currentSaveData;
+            set => currentSaveData = value;
+        }
+
 
         private void Awake()
         {

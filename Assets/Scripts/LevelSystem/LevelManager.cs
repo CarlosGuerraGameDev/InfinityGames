@@ -14,7 +14,14 @@ namespace LevelSystem
         [SerializeField] private int currentExperience;
         [SerializeField] private int previousLevelExperience;
         [SerializeField] private int nextLevelExperience;
+        
+        public int CurrentLevel
+        {
+            get => currentLevel;
+            set => currentLevel = value;
+        }
 
+        
         public int CurrentExperience
         {
             get => currentExperience;
@@ -35,8 +42,8 @@ namespace LevelSystem
 
         private void Start()
         {
-            currentLevel = playerManager.currentSaveData.level;
-            currentExperience = playerManager.currentSaveData.xp;
+            currentLevel = playerManager.CurrentSaveData.level;
+            currentExperience = playerManager.CurrentSaveData.xp;
             SetNextLevelDifficulty();
         }
 
@@ -66,6 +73,7 @@ namespace LevelSystem
             {
                 Debug.Log($"You are now on the level {currentLevel} for the next level you will need {nextLevelExperience} experience.");
                 currentLevel++;
+                currentExperience = 0;
                 playerManager.saveManager.EditDataProperty(gameData =>
                 {
                     gameData.level = currentLevel;
