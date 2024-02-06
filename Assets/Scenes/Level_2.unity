@@ -7828,6 +7828,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1136032761}
   m_CullTransparentMesh: 1
+--- !u!1 &1174633289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1174633291}
+  - component: {fileID: 1174633290}
+  m_Layer: 0
+  m_Name: LevelUtility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1174633290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174633289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00cd81020ddc40729ca07f7f2a0e65ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1174633291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174633289}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.783625, y: -1.7998333, z: 375.69302}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1178087794
 GameObject:
   m_ObjectHideFlags: 0
@@ -8411,6 +8455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae4696cd28c43ce8381d3fb48777990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stagesSo: {fileID: 11400000, guid: 6f7808ccb3e4b744aa873130ef17c3b3, type: 2}
   levelManager: {fileID: 1673616111}
   playerManager: {fileID: 1419550722}
   puzzlePieces:
@@ -8429,9 +8474,6 @@ MonoBehaviour:
   - {fileID: 634988928}
   - {fileID: 1698738634}
   isPuzzleFinished: 0
-  rewardPoints: 150
-  rewardExperience: 60
-  nextLevel: Menu
   whenPuzzeSolvedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -8907,9 +8949,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c16adce0d4b46a88762070deda9fd76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasNextLevel: 0
-  nextLevelName: 
-  stagesSo: {fileID: 11400000, guid: 6f7808ccb3e4b744aa873130ef17c3b3, type: 2}
+  levelUtility: {fileID: 1174633290}
+  unlockStage: {fileID: 0}
+  curretStage: 0
+  stageConfiguration: {fileID: 11400000, guid: 3548d9964fbec504fbfd975320d4a43a, type: 2}
+  onStageStart:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1766646307
 GameObject:
   m_ObjectHideFlags: 0
@@ -9604,3 +9650,4 @@ SceneRoots:
   - {fileID: 1178087798}
   - {fileID: 883888168}
   - {fileID: 780550666}
+  - {fileID: 1174633291}

@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea1b98049ab4a93aabf2841840d91e8, type: 3}
-  m_Name: Stage2
+  m_Name: Stage3
   m_EditorClassIdentifier: 
-  id: 2
-  name: Stage 2
-  levelName: Level_2
-  rewardXp: 300
-  rewardScore: 400
+  id: 3
+  name: 
+  rewardXp: 0
+  rewardScore: 0
   backgroundStage: {fileID: 2100000, guid: a929aa5c2f15aa044be888dc5d50469b, type: 2}
   backgroundLockedStage: {fileID: 2100000, guid: 713cb07713608d14fae2708095689452, type: 2}

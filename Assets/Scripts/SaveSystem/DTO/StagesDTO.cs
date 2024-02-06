@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using SaveSystem.DTO;
 
-namespace SaveSystem
+namespace SaveSystem.DTO
 {
     [System.Serializable]
     public class StagesDTO

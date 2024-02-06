@@ -1,5 +1,6 @@
 ﻿using PlayerSystem;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace LevelSystem
 {
@@ -47,8 +48,9 @@ namespace LevelSystem
             SetNextLevelDifficulty();
         }
 
-        private void SetNextLevelDifficulty()
+        public void SetNextLevelDifficulty()
         {
+            currentExperience = playerManager.CurrentSaveData.xp;
             previousLevelExperience = (int)difficultyCurve.Evaluate(currentLevel);
             nextLevelExperience = (int)difficultyCurve.Evaluate(currentLevel + 1);
         }

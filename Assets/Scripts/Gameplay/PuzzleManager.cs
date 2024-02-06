@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using LevelSystem;
 using PlayerSystem;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,13 +9,11 @@ namespace Gameplay
 {
     public class PuzzleManager : MonoBehaviour
     {
+        [SerializeField] private StagesSO stagesSo;
         [SerializeField] private LevelManager levelManager;
         [SerializeField] private PlayerManager playerManager;
         [SerializeField] private List<Piece> puzzlePieces;
         [SerializeField] private bool isPuzzleFinished;
-        [SerializeField] private int rewardPoints;
-        [SerializeField] private int rewardExperience;
-        [SerializeField] private string nextLevel;
 
         public UnityEvent whenPuzzeSolvedEvent;
         
@@ -53,8 +52,8 @@ namespace Gameplay
                     puzzlePieces[i].SetWinningColor();
                 }
                 
-                levelManager.AddExperience(rewardPoints);
-                playerManager.AddScore(rewardExperience);
+                levelManager.AddExperience(stagesSo.rewardXp);
+                playerManager.AddScore(stagesSo.rewardScore);
                 OnPuzzleFinishedEvent?.Invoke();
                 whenPuzzeSolvedEvent.Invoke();
             }

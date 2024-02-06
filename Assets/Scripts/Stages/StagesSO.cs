@@ -8,6 +8,10 @@ namespace ScriptableObjects
     {
         public int id;
         public string name;
+        public string levelName;
+        public int rewardXp;
+        public int rewardScore;
         public Material backgroundStage;
+        public Material backgroundLockedStage;
     }
 }

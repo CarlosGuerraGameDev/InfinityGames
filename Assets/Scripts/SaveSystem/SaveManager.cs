@@ -20,13 +20,6 @@ namespace Mechanics.SaveSystem
             Initialize();
         }
 
-        public SaveManager(ISerializer<T> serializer ,LoadConfig loadConfig)
-        {
-            this.serializer = serializer;
-            this.loadConfig = loadConfig;
-            Initialize();
-        }
-
         private void Initialize()
         {
             if (!File.Exists(saveConfig.SaveFilePath))

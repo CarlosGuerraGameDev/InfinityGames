@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Stage1
   m_EditorClassIdentifier: 
   id: 1
-  name: 
+  name: Stage 1
+  levelName: Level_1
+  rewardXp: 150
+  rewardScore: 200
   backgroundStage: {fileID: 2100000, guid: a392c8ceae669954f8721004baba2b2b, type: 2}
+  backgroundLockedStage: {fileID: 2100000, guid: 713cb07713608d14fae2708095689452, type: 2}
