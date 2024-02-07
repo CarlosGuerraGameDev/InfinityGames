@@ -2,6 +2,7 @@
 using LevelSystem;
 using PlayerSystem;
 using ScriptableObjects;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -30,6 +31,11 @@ namespace Gameplay
             Piece.OnCheckPuzzleConditionIsMet -= CheckIfPuzzleIsSolved;
         }
 
+        public void UpdateWinText(TMP_Text winText)
+        {
+            winText.text = "Congratulations you\nmade it\n\nYou got " + stagesSo.rewardScore + "+ points";
+        }
+        
         private void CheckIfPuzzleIsSolved()
         {
             foreach (var piece in puzzlePieces)

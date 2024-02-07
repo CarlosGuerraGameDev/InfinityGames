@@ -11,5 +11,7 @@ namespace UI
         public int alpha = 1;
         public int time = 1;
         public Ease ease = Ease.Linear;
+        public float scaleValue = 1f;
+        public float scaleTabletValue = 0.5f;
     }
 }

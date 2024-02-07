@@ -297,6 +297,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onSlideAnimationStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &311050152
 GameObject:
   m_ObjectHideFlags: 0
@@ -5857,7 +5860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
+  m_RenderShadows: 0
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 1
@@ -6292,10 +6295,10 @@ RectTransform:
   - {fileID: 1981614243}
   m_Father: {fileID: 991703729}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 701}
-  m_SizeDelta: {x: 1920, y: 1530}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 1530}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1105513123
 MonoBehaviour:
@@ -6334,6 +6337,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onSlideAnimationStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!225 &1105513124
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -6419,7 +6425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RenderShadows: 1
+  m_RenderShadows: 0
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
@@ -6823,6 +6829,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onSlideAnimationStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1612770497
 GameObject:
   m_ObjectHideFlags: 0
@@ -7462,6 +7471,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 883888168}
   - {fileID: 1419550723}
   - {fileID: 1058315276}
   - {fileID: 1673616110}
@@ -7470,5 +7480,4 @@ SceneRoots:
   - {fileID: 991703729}
   - {fileID: 1863027247}
   - {fileID: 1178087798}
-  - {fileID: 883888168}
   - {fileID: 780550666}

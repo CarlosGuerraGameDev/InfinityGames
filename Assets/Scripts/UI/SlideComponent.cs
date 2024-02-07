@@ -1,5 +1,4 @@
-﻿using System;
-using DG.Tweening;
+﻿using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -18,6 +17,7 @@ namespace UI
         public UnityEvent onSlideAnimationInEvent;
         public UnityEvent onSlideAnimationOutEvent;
         public UnityEvent onSlideAnimationAwakeEvent;
+        public UnityEvent onSlideAnimationStartEvent;
 
         private void Awake()
         {
@@ -33,13 +33,12 @@ namespace UI
         {
             Animate(slideOutParams, onSlideAnimationOutEvent);
         }
-        
+
         private void Animate(AnimationConfigParameters parameters, UnityEvent callbackEvent)
         {
-            slideRectTransform.DOAnchorPos(parameters.position, parameters.time).SetEase(parameters.ease).OnComplete(() =>
-            {
-                callbackEvent.Invoke();
-            });
+            slideRectTransform.DOAnchorPos(parameters.position, parameters.time)
+                .SetEase(parameters.ease).OnComplete(() => { callbackEvent.Invoke(); })
+                .OnPlay(() => onSlideAnimationStartEvent.Invoke());
         }
 
     }

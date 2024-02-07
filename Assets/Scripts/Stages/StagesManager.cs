@@ -14,11 +14,11 @@ namespace Stages
     public class StagesManager : MonoBehaviour
     {
         private SaveManager<StagesDTO> _saveManager;
-        private StagesDTO _currentSaveData;
-        
+        private StagesDTO currentSaveData;
+
+        [SerializeField] private StagesSO currentStage;
         [SerializeField] private LevelUtility levelUtility;
         [SerializeField] private StagesSO unlockStage;
-        [SerializeField] private int curretStage = 0;
         
         [SerializeField] private StageConfiguration stageConfiguration;
         public UnityEvent onStageStart;
@@ -31,8 +31,8 @@ namespace Stages
 
         public StagesDTO CurrentSaveData
         {
-            get => _currentSaveData;
-            set => _currentSaveData = value;
+            get => currentSaveData;
+            set => currentSaveData = value;
         }
 
         private void Awake()
@@ -46,7 +46,7 @@ namespace Stages
             
             ISerializer<StagesDTO> jsonSerializer = new JsonSerializer<StagesDTO>();
             _saveManager = new SaveManager<StagesDTO>(jsonSerializer, saveConfig, loadConfig, defaultData);
-            _currentSaveData = _saveManager.Load();
+            currentSaveData = _saveManager.Load();
         }
 
         private void Start()
@@ -59,7 +59,7 @@ namespace Stages
         {
             for (var i = 0; i < stageConfiguration.StagesSos.Count(); i++)
             {
-                if (!_currentSaveData.stages.Select(stage => stage.id).Contains(stageConfiguration.StagesSos[i].id))
+                if (!currentSaveData.stages.Select(stage => stage.id).Contains(stageConfiguration.StagesSos[i].id))
                 {
                     
                     int currentStage = stageConfiguration.StagesSos[i].id;
@@ -70,33 +70,39 @@ namespace Stages
                         dto.stages.Add(stage);
                         return dto;
                     });
-                    Debug.Log("Novo level adicionado á config!");
+                    Debug.Log("New stage added to the config!");
                 }
                 else
                 {
-                    Debug.Log("Este level já existe no jogo!");
+                    Debug.Log("This stage already exist in the config!");
                 }
             }
-            _currentSaveData = _saveManager.Load();
+            currentSaveData = _saveManager.Load();
         }
         
-        
-        public void GoToNextStage()
+        public void GetNextStage()
         {
+            int currentIndex = stageConfiguration.StagesSos.IndexOf(currentStage);
 
-            //Check if this currentLevel is the last Level
-            if (_saveManager.Load().stages[curretStage].id == _saveManager.Load().stages.Last().id)
+            if (currentIndex == -1)
             {
-                //Send the player to he main menu
+                Debug.LogError("Current stage not found in the list.");
                 levelUtility.LoadScene("Menu");
                 return;
             }
 
-            curretStage++;
+            if (currentIndex == stageConfiguration.StagesSos.Count - 1)
+            {
+                Debug.Log("Current stage is the last one in the list.");
+                levelUtility.LoadScene("Menu");
+                return;
+            }
 
+            StagesSO nextStage = stageConfiguration.StagesSos[currentIndex + 1];
+            Debug.Log("The Name of the next stage is : " + nextStage.name);
+            levelUtility.LoadScene(nextStage.levelName);
         }
         
-        //Unlocks the levelStage
         public void UnlockStage()
         {
 
@@ -113,12 +119,12 @@ namespace Stages
                     {
                         if (stage.isUnlocked) return dto;
                         stage.isUnlocked = true;
-                        Debug.Log("Nivel encontrado!");
+                        Debug.Log("Stage found!!");
                         return dto;
                     }
                 }
                 
-                Debug.Log("Nivel não encontrado!");
+                Debug.Log("Stage not found!");
                 return dto;
             });    
         }

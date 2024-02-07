@@ -7321,11 +7321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9020f196efd42f7ae5af25c33670925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSaveData:
-    score: 0
-    level: 0
-    xp: 0
-    stages: []
 --- !u!4 &1419550723
 Transform:
   m_ObjectHideFlags: 0
@@ -7557,6 +7552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae4696cd28c43ce8381d3fb48777990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stagesSo: {fileID: 11400000, guid: d0c70e2f134f0c54ca6d783a8ac42360, type: 2}
   levelManager: {fileID: 1673616111}
   playerManager: {fileID: 1419550722}
   puzzlePieces:
@@ -7569,9 +7565,6 @@ MonoBehaviour:
   - {fileID: 615530313}
   - {fileID: 563765484}
   isPuzzleFinished: 0
-  rewardPoints: 100
-  rewardExperience: 50
-  nextLevel: Level_2
   whenPuzzeSolvedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -8157,7 +8150,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1981388891}
-  - component: {fileID: 1981388892}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -8180,31 +8172,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1981388892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981388890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870ad2df17594cb497ecf53c8449f1ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelManager: {fileID: 1673616111}
-  winningUI: {fileID: 1070612074}
-  winningUIMessageText: {fileID: 1766646308}
-  winningXPText: {fileID: 287014231}
-  levelText: {fileID: 1699369185}
-  easeBar: 7
-  easeOut: 7
-  slider: {fileID: 1904506197}
-  winTextAnimDuration: 1
-  winLevelBarAnimDuration: 1
-  whenPuzzleIsFinishedEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2030962739
 GameObject:
   m_ObjectHideFlags: 0
