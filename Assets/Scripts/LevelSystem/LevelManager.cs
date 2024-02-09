@@ -50,6 +50,8 @@ namespace LevelSystem
 
         public void SetNextLevelDifficulty()
         {
+            playerManager.CurrentSaveData = playerManager.saveManager.Load();
+            currentLevel = playerManager.CurrentSaveData.level;
             currentExperience = playerManager.CurrentSaveData.xp;
             previousLevelExperience = (int)difficultyCurve.Evaluate(currentLevel);
             nextLevelExperience = (int)difficultyCurve.Evaluate(currentLevel + 1);
